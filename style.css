@@ -95,6 +95,9 @@ footer {
 
 /* Small screen friendly */
 @media (max-width: 800px) {
+  body {
+    width: 90%;
+  }
   .profile {
     flex-direction: column-reverse;
   }
