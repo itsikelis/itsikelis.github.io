@@ -99,6 +99,7 @@ footer {
     flex-direction: column-reverse;
   }
   .profile-pic .img {
+    margin-left: 0;
     justify-content: center;
     width: 100%;
   }
