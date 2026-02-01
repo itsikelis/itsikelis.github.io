@@ -26,7 +26,7 @@
 body {
   margin: auto;
   width: 70%;
-  max-width: 930px;
+  /* max-width: 930px; */
   font-family: SatoshiLight, sans-serif;
   text-align: justify;
   background-color: var(--bg-color);
