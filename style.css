@@ -21,7 +21,7 @@
     --bg-color: #000000;
     --text-color: #ffffff;
     --accent-color: #66b3ff;
-    --secondary-text: #b0b0b0;
+    --secondary-text: #c0c0c0;
     --mail-img: url("images/mail-dark.svg");
     --github-img: url("images/github-dark.svg");
     --scholar-img: url("images/book-dark.svg");
@@ -37,19 +37,6 @@ body {
   text-align: justify;
   background-color: var(--bg-color);
   color: var(--text-color);
-}
-
-a {
-  text-decoration: none;
-  color: var(--accent-color);
-}
-
-a:visited {
-  color: var(--accent-color);
-}
-
-.rounded {
-  border-radius: 0.25rem;
 }
 
 .container {
@@ -75,6 +62,15 @@ a:visited {
 
 .bio {
   font-weight: normal;
+}
+
+.bio a {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+.bio a:visited {
+  color: var(--accent-color);
 }
 
 /* Picture */
