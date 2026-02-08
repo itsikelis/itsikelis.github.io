@@ -39,6 +39,15 @@ body {
   color: var(--text-color);
 }
 
+a {
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+a:visited {
+  color: var(--accent-color);
+}
+
 .rounded {
   border-radius: 0.25rem;
 }
