@@ -7,18 +7,24 @@
 /* Define Color Variables */
 :root {
   --bg-color: #ffffff;
-  --text-color: #333333;
+  --text-color: #000000;
   --accent-color: #0077cc;
   --secondary-text: #666666;
+  --mail-img: url("images/mail-light.svg");
+  --github-img: url("images/github-light.svg");
+  --scholar-img: url("images/book-light.svg");
 }
 
 /* Dark Mode Override */
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-color: #000000;
-    --text-color: #e0e0e0;
+    --text-color: #ffffff;
     --accent-color: #66b3ff;
     --secondary-text: #b0b0b0;
+    --mail-img: url("images/mail-dark.svg");
+    --github-img: url("images/github-dark.svg");
+    --scholar-img: url("images/book-dark.svg");
   }
 }
 
@@ -33,22 +39,12 @@ body {
   color: var(--text-color);
 }
 
-.container {
-  margin-top: 3rem;
-}
-
 .rounded {
   border-radius: 0.25rem;
 }
 
-/* Profile Section */
-.profile {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
-.bio {
+.container {
+  margin-top: 3rem;
 }
 
 .container h1 {
@@ -62,7 +58,13 @@ body {
   margin-top: 0px;
 }
 
-.bio p {
+/* Profile Section */
+.profile {
+  display: flex;
+  flex-direction: row;
+}
+
+.bio {
   font-weight: normal;
 }
 
@@ -83,6 +85,38 @@ body {
   margin-top: 5px;
   font-size: 10pt;
   font-weight: light;
+}
+
+/* Contact Icons */
+.contact-icons {
+  text-align: center;
+}
+
+.contact-icons a {
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  text-decoration: none;
+}
+
+.contact-icons img {
+  height: auto;
+  transition: transform 0.3s ease-in-out;
+}
+
+.contact-icons img:hover {
+  transform: scale(1.1);
+}
+
+.contact-icons .mail-icon {
+  content: var(--mail-img);
+}
+
+.contact-icons .github-icon {
+  content: var(--github-img);
+}
+
+.contact-icons .scholar-icon {
+  content: var(--scholar-img);
 }
 
 /* Footer */
