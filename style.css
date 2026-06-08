@@ -1,7 +1,25 @@
 /* Specify Custom Font */
 @font-face {
-  font-family: SatoshiLight;
-  src: url(fonts/satoshi_light.woff);
+  font-family: "SatoshiLight";
+  src: url("fonts/satoshi_light.woff");
+}
+
+@font-face {
+  font-family: "TiemposBold";
+  src: url("fonts/tiempos_bold.woff");
+  font-style: bold;
+}
+
+@font-face {
+  font-family: "TiemposRegular";
+  src: url("fonts/tiempos_regular.woff");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "TiemposItalic";
+  src: url("fonts/tiempos_talic.woff");
+  font-style: italic;
 }
 
 /* Define Color Variables */
@@ -33,7 +51,7 @@ body {
   margin: auto;
   width: 70%;
   max-width: 930px;
-  font-family: SatoshiLight, sans-serif;
+  font-family: TiemposRegular, TiemposBold, TiemposItalic, sans-serif;
   text-align: justify;
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -61,6 +79,7 @@ body {
 }
 
 .bio {
+  font-family: SatoshiLight;
   font-weight: normal;
 }
 
@@ -147,4 +166,37 @@ footer {
     justify-content: center;
     width: 100%;
   }
+}
+
+/* Navigation Bar */
+.navbar {
+  /* Follow the view */
+  position: sticky;
+  top: 0;
+  z-index: 100; /* Keep above all other text and images */
+  background-color: var(--bg-color);
+
+  /* Layout and Spacing */
+  display: flex;
+  gap: 1.5rem;
+  padding: 1rem 0 1rem 0; /* Adds space above and below the links */
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+
+  /* border-bottom: 1px solid rgba(128, 128, 128, 0.3); */
+}
+.navbar a {
+  text-decoration: none;
+  color: var(--secondary-text); /* Use the subtle grey from your variables */
+  font-weight: bold;
+  transition: color 0.2s ease-in-out;
+}
+
+.navbar a:hover {
+  color: var(--accent-color); /* Turns blue on hover */
+}
+
+/* Highlights the current page */
+.navbar a.active {
+  color: var(--text-color);
 }
