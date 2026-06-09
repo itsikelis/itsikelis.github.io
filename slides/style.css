@@ -1,0 +1,384 @@
+/* CSS Style sheet for slides. Heavily based on: https://github.com/zarazhangrui/frontend-slides */
+
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap");
+
+@font-face {
+  font-family: "SatoshiLight";
+  src: url("../fonts/satoshi_light.woff");
+}
+
+@font-face {
+  font-family: "TiemposBold";
+  src: url("../fonts/tiempos_bold.woff");
+  font-style: bold;
+}
+
+@font-face {
+  font-family: "TiemposRegular";
+  src: url("../fonts/tiempos_regular.woff");
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "TiemposItalic";
+  src: url("../fonts/tiempos_talic.woff");
+  font-style: italic;
+}
+
+:root {
+  /* Core Palette */
+  --cream-paper: #fafadf;
+  --cream-paper-2: #f2f2d2;
+  --cream-paper-3: #f0f0d4;
+  --cream-warm: #f5f0e4;
+  --ink-black: #1a1a16;
+  --ink-graphite: #5e5e54;
+  --ink-graphite-light: #8a8a80;
+
+  /* Color Aliases */
+  --c-bg: var(--cream-paper);
+  --c-bg-light: var(--cream-paper);
+  --c-bg-cream: var(--cream-warm);
+  --c-fg: var(--ink-black);
+  --c-fg-light: var(--ink-black);
+  --c-fg-2: var(--ink-graphite);
+  --c-fg-3: var(--ink-graphite-light);
+  --c-accent: var(--ink-black);
+  --c-border: var(--ink-black);
+  --c-border-light: var(--ink-black);
+
+  /* Font Families */
+  --font-sans: "SatoshiLight", system-ui, sans-serif;
+  --font-serif: "TiemposRegular", Georgia, serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  /* Spacing (Translated to 1920x1080) 1vw = 19.2px | 1vh = 10.8px */
+  --pad-x: 153.6px; /* 8vw */
+  --pad-y: 64.8px; /* 6vh */
+  --gap-lg: 54px; /* 5vh */
+  --gap-md: 32.4px; /* 3vh */
+  --gap-sm: 16.2px; /* 1.5vh */
+}
+
+/* Base Canvas / Slide Properties */
+.slide {
+  background-color: var(--c-bg);
+  color: var(--c-fg);
+  font-family: var(--font-sans);
+  padding: var(--pad-y) var(--pad-x);
+  box-sizing: border-box;
+}
+
+.slide.bg-cream-warm {
+  background-color: var(--cream-warm);
+}
+
+/* ===========================================
+   TYPOGRAPHY (Translated from vw)
+   =========================================== */
+
+.text-display {
+  font-family: var(--font-sans);
+  font-size: 163.2px; /* 8.5vw */
+  font-weight: 200;
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  color: var(--c-fg);
+}
+
+h1,
+.text-h1 {
+  font-family: var(--font-sans);
+  font-size: 96px; /* 5vw */
+  font-weight: 200;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--c-fg);
+  margin: 0 0 var(--gap-md) 0;
+}
+
+h2,
+.text-h2 {
+  font-family: var(--font-sans);
+  font-size: 61.44px; /* 3.2vw */
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--c-fg);
+  margin: 0 0 var(--gap-md) 0;
+}
+
+h3,
+.text-h3 {
+  font-family: var(--font-sans);
+  font-size: 38.4px; /* 2vw */
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--c-fg);
+  margin: 0 0 var(--gap-sm) 0;
+}
+
+.text-lead {
+  font-family: var(--font-sans);
+  font-size: 28.8px; /* 1.5vw */
+  font-weight: 300;
+  line-height: 1.65;
+  color: var(--c-fg-2); /* Muted by default */
+}
+
+p,
+.text-body {
+  font-family: var(--font-sans);
+  font-size: 21.12px; /* 1.1vw */
+  font-weight: 300;
+  line-height: 1.7;
+  color: var(--c-fg);
+  margin: 0 0 var(--gap-md) 0;
+}
+
+.text-caption,
+figcaption {
+  font-family: var(--font-sans);
+  font-size: 16.32px; /* 0.85vw */
+  font-weight: 300;
+  line-height: 1.55;
+  color: var(--c-fg-2);
+}
+
+.text-label {
+  font-family: var(--font-mono);
+  font-size: 13.82px; /* 0.72vw */
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--c-fg-3);
+}
+
+.text-quote-serif {
+  font-family: var(--font-serif);
+  font-size: 61.44px; /* 3.2vw */
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.35;
+  color: var(--c-fg);
+}
+
+.text-insight-serif {
+  font-family: var(--font-serif);
+  font-size: 53.76px; /* 2.8vw */
+  font-style: normal; /* Never italic */
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--c-fg);
+}
+
+.text-stat-value {
+  font-family: var(--font-sans);
+  font-size: 105.6px; /* 5.5vw */
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--c-fg);
+}
+
+.text-flow-num {
+  font-family: var(--font-sans);
+  font-size: 67.2px; /* 3.5vw */
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--c-fg);
+}
+
+/* ===========================================
+   LISTS & STRUCTURAL CHROME
+   =========================================== */
+
+/* Em-dash bullet lists */
+ul.bullet-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 var(--gap-md) 0;
+}
+
+ul.bullet-list > li {
+  position: relative;
+  padding-left: 2em; /* Gives space for the dash */
+  margin-bottom: var(--gap-sm);
+  font-family: var(--font-sans);
+  font-size: 21.12px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+ul.bullet-list > li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--c-fg-3);
+  font-family: var(--font-mono);
+}
+
+/* Slide Header / Footer Chrome */
+.chrome-band {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.chrome-header {
+  border-bottom: 1px solid var(--c-border);
+  padding-bottom: 12px;
+  margin-bottom: var(--gap-lg);
+}
+
+.chrome-footer {
+  position: absolute;
+  bottom: var(--pad-y);
+  left: var(--pad-x);
+  right: var(--pad-x);
+  border-top: 1px solid var(--c-border);
+  padding-top: 12px;
+}
+
+/* Disabled Sidebar Noise */
+.slide-sidebar {
+  display: none !important;
+}
+
+/* ===========================================
+   COMPONENTS
+   =========================================== */
+
+/* Hairline Rules */
+.cmp-rule {
+  width: 36px;
+  height: 1px;
+  background-color: var(--c-border);
+  margin: var(--gap-md) 0;
+}
+
+.cmp-rule-full {
+  width: 100%;
+  height: 1px;
+  background-color: var(--c-border);
+}
+
+/* Eyebrows & Tags */
+.cmp-kicker {
+  font-family: var(--font-mono);
+  font-size: 13.82px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--c-fg-3);
+  margin-bottom: 12px;
+  display: block;
+}
+
+.cmp-tag {
+  border: 1px solid var(--c-border);
+  padding: 0.3em 0.8em;
+  font-family: var(--font-mono);
+  font-size: 13.82px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: inline-block;
+}
+
+/* Insight Card */
+.cmp-insight-card {
+  background-color: var(--cream-warm);
+  border-radius: 16px;
+  padding: 32.4px 48px; /* 3vh 2.5vw mapping approx */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* Stats */
+.cmp-stat-cell {
+  border-top: 1px solid var(--c-border);
+  padding: var(--gap-md) var(--gap-md) var(--gap-md) 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Timelines */
+.cmp-timeline-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: var(--ink-black);
+  border: 2px solid var(--cream-warm);
+}
+
+.cmp-vtimeline-spine {
+  width: 1px;
+  background-color: var(--ink-black);
+  position: relative;
+}
+
+.cmp-vtimeline-spine::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: var(--ink-black);
+}
+
+/* Charts */
+.cmp-pie-donut {
+  width: 453.6px; /* min(26vw, 42vh) -> 453.6px is 42vh limit */
+  height: 453.6px;
+  border-radius: 50%;
+  position: relative;
+  /* Add conic-gradient directly to element via inline style */
+}
+
+.cmp-pie-donut::after {
+  content: "";
+  position: absolute;
+  top: 15%;
+  left: 15%;
+  right: 15%;
+  bottom: 15%;
+  border-radius: 50%;
+  background-color: var(--c-bg); /* Cutout matches surface */
+}
+
+.cmp-pyramid-bar {
+  border-left: 2px solid var(--ink-black);
+  /* color-mix is applied inline via component system */
+  height: 40px;
+  margin-bottom: 8px;
+}
+
+.cmp-bar-fill {
+  width: 100%;
+  background-color: var(--ink-graphite-light);
+  opacity: 0.5;
+  /* Inline style manages height */
+}
+
+.cmp-bar-fill.active {
+  background-color: var(--ink-black);
+  opacity: 1;
+}
+
+/* Media Placeholder */
+.cmp-img-placeholder {
+  border: 1px solid var(--c-border);
+  background-color: var(--cream-paper-3);
+  color: var(--ink-graphite);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-mono);
+  font-size: 13.82px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+}
