@@ -27,358 +27,384 @@
 
 :root {
   /* Core Palette */
-  --cream-paper: #fafadf;
-  --cream-paper-2: #f2f2d2;
-  --cream-paper-3: #f0f0d4;
-  --cream-warm: #f5f0e4;
-  --ink-black: #1a1a16;
-  --ink-graphite: #5e5e54;
-  --ink-graphite-light: #8a8a80;
-
-  /* Color Aliases */
-  --c-bg: var(--cream-paper);
-  --c-bg-light: var(--cream-paper);
-  --c-bg-cream: var(--cream-warm);
-  --c-fg: var(--ink-black);
-  --c-fg-light: var(--ink-black);
-  --c-fg-2: var(--ink-graphite);
-  --c-fg-3: var(--ink-graphite-light);
-  --c-accent: var(--ink-black);
-  --c-border: var(--ink-black);
-  --c-border-light: var(--ink-black);
+  /* --bg: #fafadf; */
+  --bg: #ffffff;
+  --text: #1a1a16;
+  --text-alt-1: #5e5e54;
+  --test-alt-2: #8a8a80;
 
   /* Font Families */
-  --font-sans: "SatoshiLight", system-ui, sans-serif;
   --font-serif: "TiemposRegular", Georgia, serif;
+  --font-sans: "SatoshiLight", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
-  /* Spacing (Translated to 1920x1080) 1vw = 19.2px | 1vh = 10.8px */
-  --pad-x: 153.6px; /* 8vw */
-  --pad-y: 64.8px; /* 6vh */
-  --gap-lg: 54px; /* 5vh */
-  --gap-md: 32.4px; /* 3vh */
-  --gap-sm: 16.2px; /* 1.5vh */
+  /* ── Type Scale ───────────────────────────────────────────────────── */
+  --sz-display: 6.5vw; /* hero/cover — very large, very light         */
+  --sz-h1: 5vw; /* chapter / statement headline                */
+  --sz-h2: 3.2vw; /* slide headline                              */
+  --sz-h3: 2vw; /* sub-headline                                */
+  --sz-lead: 1.5vw; /* generous lead text                          */
+  --sz-body: 1.1vw; /* body text                                   */
+  --sz-caption: 0.85vw; /* captions, footnotes                         */
+  --sz-label: 0.72vw; /* chrome labels, sidebar labels               */
+  --sz-counter: 0.65vw; /* slide counter               */
+
+  /* Spacing */
+  --pad-x: 8vw; /* generous horizontal padding — space is the design */
+  --pad-y: 6vh;
+  --gap-lg: 5vh;
+  --gap-md: 3vh;
+  --gap-sm: 1.5vh;
+
+  /* Motion */
+  --ease-slide: cubic-bezier(0.77, 0, 0.175, 1);
+  --dur-slide: 0.9s;
+  --ease-enter: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-enter: 0.7s;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  background: var(--c-bg);
+  -webkit-font-smoothing: antialiased;
 }
 
 /* Base Canvas / Slide Properties */
 .slide {
-  background-color: var(--c-bg);
-  color: var(--c-fg);
+  background-color: var(--bg);
+  color: var(--text);
   font-family: var(--font-sans);
   padding: var(--pad-y) var(--pad-x);
   box-sizing: border-box;
 }
 
-.slide.bg-cream-warm {
-  background-color: var(--cream-warm);
+/* Slide counter — bottom-right */
+#slide-counter {
+  position: fixed;
+  bottom: 20px;
+  right: 28px;
+  font-family: var(--font-mono);
+  font-size: var(--sz-counter);
+  letter-spacing: 0.12em;
+  color: rgba(26, 26, 22, 0.28);
+  z-index: 100;
+  user-select: none;
 }
 
 /* ===========================================
-   TYPOGRAPHY (Translated from vw)
+   ANIMATIONS
+   =========================================== */
+.slide-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--gap-sm);
+  border-bottom: 1px solid var(--text);
+  margin-bottom: var(--gap-md);
+}
+
+.slide-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--gap-sm);
+  border-top: 1px solid var(--c-border);
+  margin-top: var(--gap-md);
+}
+
+/* ===========================================
+   ANIMATIONS
+   =========================================== */
+/*
+* All [data-anim] elements start invisible (opacity:0).
+* They animate when their parent slide gains .is-active.
+* JS forcefully resets them before adding .is-active so re-visiting
+* a slide replays the entrance animation from the beginning.
+*/
+
+[data-anim] {
+  opacity: 0;
+}
+.slide.is-active [data-anim] {
+  animation-duration: var(--dur-enter);
+  animation-timing-function: var(--ease-enter);
+  animation-fill-mode: forwards;
+}
+.slide.is-active [data-anim="fade-up"] {
+  animation-name: kFadeUp;
+}
+.slide.is-active [data-anim="fade-in"] {
+  animation-name: kFadeIn;
+}
+.slide.is-active [data-anim="reveal-right"] {
+  animation-name: kRevealRight;
+}
+.slide.is-active [data-anim="reveal-left"] {
+  animation-name: kRevealLeft;
+}
+.slide.is-active [data-anim="scale-in"] {
+  animation-name: kScaleIn;
+}
+
+/* Stagger delays — add data-delay="N" to offset elements */
+[data-delay="0"] {
+  animation-delay: 0s;
+}
+[data-delay="1"] {
+  animation-delay: 0.08s;
+}
+[data-delay="2"] {
+  animation-delay: 0.18s;
+}
+[data-delay="3"] {
+  animation-delay: 0.3s;
+}
+[data-delay="4"] {
+  animation-delay: 0.44s;
+}
+[data-delay="5"] {
+  animation-delay: 0.6s;
+}
+[data-delay="6"] {
+  animation-delay: 0.78s;
+}
+[data-delay="7"] {
+  animation-delay: 0.96s;
+}
+
+@keyframes kFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes kFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes kRevealRight {
+  from {
+    clip-path: inset(0 100% 0 0);
+    opacity: 1;
+  }
+  to {
+    clip-path: inset(0 0% 0 0);
+    opacity: 1;
+  }
+}
+@keyframes kRevealLeft {
+  from {
+    clip-path: inset(0 0 0 100%);
+    opacity: 1;
+  }
+  to {
+    clip-path: inset(0 0 0 0%);
+    opacity: 1;
+  }
+}
+@keyframes kScaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ===========================================
+   TYPOGRAPHY
    =========================================== */
 
-.text-display {
-  font-family: var(--font-sans);
-  font-size: 163.2px; /* 8.5vw */
+/* Display: hero headline, weight 200 — maximum airiness */
+.display {
+  font-family: var(--font-serif);
+  font-size: var(--sz-display);
   font-weight: 200;
   line-height: 0.96;
   letter-spacing: -0.02em;
-  color: var(--c-fg);
 }
-
-h1,
-.text-h1 {
-  font-family: var(--font-sans);
-  font-size: 96px; /* 5vw */
+.h1 {
+  font-family: var(--font-serif);
+  font-size: var(--sz-h1);
   font-weight: 200;
   line-height: 1.1;
   letter-spacing: -0.01em;
-  color: var(--c-fg);
-  margin: 0 0 var(--gap-md) 0;
 }
-
-h2,
-.text-h2 {
-  font-family: var(--font-sans);
-  font-size: 61.44px; /* 3.2vw */
+.h2 {
+  font-family: var(--font-serif);
+  font-size: var(--sz-h2);
   font-weight: 300;
   line-height: 1.2;
-  color: var(--c-fg);
-  margin: 0 0 var(--gap-md) 0;
 }
-
-h3,
-.text-h3 {
-  font-family: var(--font-sans);
-  font-size: 38.4px; /* 2vw */
+.h3 {
+  font-family: var(--font-serif);
+  font-size: var(--sz-h3);
   font-weight: 400;
   line-height: 1.3;
-  color: var(--c-fg);
-  margin: 0 0 var(--gap-sm) 0;
 }
-
-.text-lead {
-  font-family: var(--font-sans);
-  font-size: 28.8px; /* 1.5vw */
+.lead {
+  font-family: var(--font-serif);
+  font-size: var(--sz-lead);
   font-weight: 300;
   line-height: 1.65;
-  color: var(--c-fg-2); /* Muted by default */
 }
-
-p,
-.text-body {
+.body {
   font-family: var(--font-sans);
-  font-size: 21.12px; /* 1.1vw */
+  font-size: var(--sz-body);
   font-weight: 300;
   line-height: 1.7;
-  color: var(--c-fg);
-  margin: 0 0 var(--gap-md) 0;
 }
-
-.text-caption,
-figcaption {
+.caption {
   font-family: var(--font-sans);
-  font-size: 16.32px; /* 0.85vw */
+  font-size: var(--sz-caption);
   font-weight: 300;
   line-height: 1.55;
-  color: var(--c-fg-2);
 }
-
-.text-label {
+/* Labels: the one exception — tracked mono uppercase for structural chrome */
+.label {
   font-family: var(--font-mono);
-  font-size: 13.82px; /* 0.72vw */
+  font-size: var(--sz-label);
   font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--c-fg-3);
 }
 
-.text-quote-serif {
-  font-family: var(--font-serif);
-  font-size: 61.44px; /* 3.2vw */
-  font-style: italic;
-  font-weight: 400;
-  line-height: 1.35;
-  color: var(--c-fg);
-}
-
-.text-insight-serif {
-  font-family: var(--font-serif);
-  font-size: 53.76px; /* 2.8vw */
-  font-style: normal; /* Never italic */
-  font-weight: 400;
-  line-height: 1.15;
-  color: var(--c-fg);
-}
-
-.text-stat-value {
-  font-family: var(--font-sans);
-  font-size: 105.6px; /* 5.5vw */
-  font-weight: 200;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  color: var(--c-fg);
-}
-
-.text-flow-num {
-  font-family: var(--font-sans);
-  font-size: 67.2px; /* 3.5vw */
-  font-weight: 200;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  color: var(--c-fg);
-}
-
-/* ===========================================
-   LISTS & STRUCTURAL CHROME
-   =========================================== */
-
-/* Em-dash bullet lists */
-ul.bullet-list {
-  list-style: none;
-  padding: 0;
-  margin: 0 0 var(--gap-md) 0;
-}
-
-ul.bullet-list > li {
-  position: relative;
-  padding-left: 2em; /* Gives space for the dash */
-  margin-bottom: var(--gap-sm);
-  font-family: var(--font-sans);
-  font-size: 21.12px;
-  font-weight: 300;
-  line-height: 1.7;
-}
-
-ul.bullet-list > li::before {
-  content: "—";
+.top-right {
   position: absolute;
-  left: 0;
-  color: var(--c-fg-3);
-  font-family: var(--font-mono);
-}
-
-/* Slide Header / Footer Chrome */
-.chrome-band {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-
-.chrome-header {
-  border-bottom: 1px solid var(--c-border);
-  padding-bottom: 12px;
-  margin-bottom: var(--gap-lg);
-}
-
-.chrome-footer {
-  position: absolute;
-  bottom: var(--pad-y);
-  left: var(--pad-x);
+  top: var(--pad-y);
   right: var(--pad-x);
-  border-top: 1px solid var(--c-border);
-  padding-top: 12px;
+  text-align: right;
 }
 
-/* Disabled Sidebar Noise */
-.slide-sidebar {
-  display: none !important;
+.top-right {
+  position: absolute;
+  top: var(--pad-y);
+  right: var(--pad-x);
+  text-align: left;
 }
 
-/* ===========================================
+.muted {
+  color: var(--text-alt-2);
+}
+
+.accent {
+  color: var(--text-alt-3);
+}
+
+/* =============================
    COMPONENTS
-   =========================================== */
+   ============================= */
 
-/* Hairline Rules */
-.cmp-rule {
+.rule {
   width: 36px;
   height: 1px;
-  background-color: var(--c-border);
-  margin: var(--gap-md) 0;
+  background: var(--text);
 }
 
-.cmp-rule-full {
+.rule-full {
   width: 100%;
   height: 1px;
-  background-color: var(--c-border);
+  background: var(--text);
+  /* background: var(--c-border-light); */
 }
 
-/* Eyebrows & Tags */
-.cmp-kicker {
-  font-family: var(--font-mono);
-  font-size: 13.82px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--c-fg-3);
-  margin-bottom: 12px;
-  display: block;
-}
+/* =============================
+   LAYOUT PATTERNS
+   ============================= */
 
-.cmp-tag {
-  border: 1px solid var(--c-border);
-  padding: 0.3em 0.8em;
-  font-family: var(--font-mono);
-  font-size: 13.82px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  display: inline-block;
-}
-
-/* Insight Card */
-.cmp-insight-card {
-  background-color: var(--cream-warm);
-  border-radius: 16px;
-  padding: 32.4px 48px; /* 3vh 2.5vw mapping approx */
+/* 1. COVER */
+/* Opening slide: light cream bg, bottom-anchored content, no chrome */
+.slide--cover {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
+}
+.cover-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: flex-end;
+  gap: var(--gap-md);
+}
+/* Bottom meta bar: thin rule above, author left, version right */
+.cover-meta {
+  display: flex;
   justify-content: space-between;
+  align-items: flex-end;
+  margin-top: var(--gap-lg);
+  padding-top: var(--gap-sm);
+  border-top: 1px solid var(--c-border-light);
 }
 
-/* Stats */
-.cmp-stat-cell {
-  border-top: 1px solid var(--c-border);
-  padding: var(--gap-md) var(--gap-md) var(--gap-md) 0;
+/* ── DIAGRAM ────────────────────────────────────────────────────────── */
+.slide--diagram .slide-body {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-}
-
-/* Timelines */
-.cmp-timeline-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: var(--ink-black);
-  border: 2px solid var(--cream-warm);
-}
-
-.cmp-vtimeline-spine {
-  width: 1px;
-  background-color: var(--ink-black);
-  position: relative;
-}
-
-.cmp-vtimeline-spine::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -4px;
-  width: 9px;
-  height: 9px;
-  border-radius: 50%;
-  background-color: var(--ink-black);
-}
-
-/* Charts */
-.cmp-pie-donut {
-  width: 453.6px; /* min(26vw, 42vh) -> 453.6px is 42vh limit */
-  height: 453.6px;
-  border-radius: 50%;
-  position: relative;
-  /* Add conic-gradient directly to element via inline style */
-}
-
-.cmp-pie-donut::after {
-  content: "";
-  position: absolute;
-  top: 15%;
-  left: 15%;
-  right: 15%;
-  bottom: 15%;
-  border-radius: 50%;
-  background-color: var(--c-bg); /* Cutout matches surface */
-}
-
-.cmp-pyramid-bar {
-  border-left: 2px solid var(--ink-black);
-  /* color-mix is applied inline via component system */
-  height: 40px;
-  margin-bottom: 8px;
-}
-
-.cmp-bar-fill {
-  width: 100%;
-  background-color: var(--ink-graphite-light);
-  opacity: 0.5;
-  /* Inline style manages height */
-}
-
-.cmp-bar-fill.active {
-  background-color: var(--ink-black);
-  opacity: 1;
-}
-
-/* Media Placeholder */
-.cmp-img-placeholder {
-  border: 1px solid var(--c-border);
-  background-color: var(--cream-paper-3);
-  color: var(--ink-graphite);
-  display: flex;
-  align-items: center;
   justify-content: center;
-  font-family: var(--font-mono);
-  font-size: 13.82px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+  gap: var(--gap-lg);
+  min-height: 0;
+}
+.flow {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+.flow-step {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+  padding-right: calc(var(--pad-x) * 0.4);
+  padding-top: var(--gap-md);
+  border-top: 1px solid var(--c-border-light);
+}
+.flow-num {
+  font-family: var(--f-display);
+  font-size: 3.5vw;
+  font-weight: 200;
+  line-height: 1;
+  color: var(--c-fg-light-3);
+  letter-spacing: -0.02em;
+}
+.flow-title {
+  font-family: var(--f-heading);
+  font-size: var(--sz-h3);
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--c-fg-light);
+}
+.flow-desc {
+  font-family: var(--f-body);
+  font-size: var(--sz-body);
+  font-weight: 300;
+  color: var(--c-fg-light-2);
+  line-height: 1.68;
+}
+
+/* 9. END */
+/* Closing slide: cream bg, centered vertically, simple */
+.slide--end {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--gap-md);
 }
