@@ -7,46 +7,57 @@
     <link rel="stylesheet" href="../style.css" />
     <script src="../navigation.js" defer></script>
   </head>
-    <body>
-      <div>
-        <section class="slide slide--diagram">
-
+  <body>
+    <div>
+      <section class="slide slide--diagram">
         <header class="slide-header">
-              <span class="label muted">Towards Massively Parallel Motion Planning with Inverse Dynamics</span>
-              <span class="label muted">JNRH 2026, Montpellier, France</span>
+          <span class="label muted"
+            >Towards Massively Parallel Motion Planning with Inverse
+            Dynamics</span
+          >
+          <span class="label muted">JNRH 2026, Montpellier, France</span>
         </header>
 
-        <div class="slide-body">
+        <div class="slide--diagram-body">
           <h2
             class="h2"
             style="font-weight: 200"
             data-anim="fade-up"
             data-delay="0"
           >
-          Talk outline
+            Talk outline
           </h2>
           <div class="flow" data-anim="fade-up" data-delay="1">
-            <div class="flow-step">
+            <div class="flow-step hidden">
               <div class="flow-num">01</div>
               <div class="flow-title">Motivation</div>
-              <div class="flow-desc">Problem description and previous work.</div>
+              <div class="flow-desc">
+                Problem description and previous work.
+              </div>
             </div>
-            <div class="flow-step">
+            <div class="flow-step hidden">
               <div class="flow-num">02</div>
-              <div class="flow-title">Optimal Control Solver</div>
-              <div class="flow-desc">Optimization-based motion planning and SQP solver implementation.</div>
+              <div class="flow-title">OCP Solver</div>
+              <div class="flow-desc">
+                Optimization-based motion planning and SQP solver
+                implementation.
+              </div>
             </div>
-            <div class="flow-step">
+            <div class="flow-step hidden">
               <div class="flow-num">03</div>
               <div class="flow-title">Parallelization</div>
-              <div class="flow-desc">Batched implementation with GPU support.</div>
+              <div class="flow-desc">
+                Batched implementation with GPU support.
+              </div>
             </div>
-            <div class="flow-step">
+            <div class="flow-step hidden">
               <div class="flow-num">04</div>
-              <div class="flow-title">Experimental Results</div>
-              <div class="flow-desc">Validation and comparison with related works.</div>
+              <div class="flow-title">Experiments</div>
+              <div class="flow-desc">
+                Validation and comparison with related works.
+              </div>
             </div>
-            <div class="flow-step">
+            <div class="flow-step hidden">
               <div class="flow-num">05</div>
               <div class="flow-title">Conclusions</div>
               <div class="flow-desc">Recap and future directions.</div>
@@ -54,15 +65,10 @@
           </div>
         </div>
 
-        <footer class="slide-footer">
-          <!-- <span class="label muted">Research Team · [Month, Year]</span> -->
-          <!-- <span class="label muted">12 / 18</span> -->
-        </footer>
+        <footer class="slide-footer"></footer>
 
-          <div id="slide-counter">02 / 16</div>
-        </section>
-      </div>
-    </body>
-  </html>
+        <div id="slide-counter">02</div>
+      </section>
+    </div>
+  </body>
 </html>
-

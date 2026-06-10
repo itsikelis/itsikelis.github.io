@@ -87,21 +87,8 @@ body {
   box-sizing: border-box;
 }
 
-/* Slide counter — bottom-right */
-#slide-counter {
-  position: fixed;
-  bottom: 20px;
-  right: 28px;
-  font-family: var(--font-mono);
-  font-size: var(--sz-counter);
-  letter-spacing: 0.12em;
-  color: rgba(26, 26, 22, 0.28);
-  z-index: 100;
-  user-select: none;
-}
-
 /* ===========================================
-   ANIMATIONS
+   HEADER, FOOTER AND SLIDE COUNTER
    =========================================== */
 .slide-header {
   display: flex;
@@ -117,8 +104,46 @@ body {
   justify-content: space-between;
   align-items: center;
   padding-top: var(--gap-sm);
-  border-top: 1px solid var(--c-border);
+  /* border-bottom: 1px solid var(--text); */
   margin-top: var(--gap-md);
+}
+
+/* Slide counter — bottom-right */
+#slide-counter {
+  position: fixed;
+  bottom: 20px;
+  right: 28px;
+  font-family: var(--font-mono);
+  font-size: var(--sz-counter);
+  letter-spacing: 0.12em;
+  color: rgba(26, 26, 22, 0.28);
+  z-index: 100;
+  user-select: none;
+}
+
+/* ===========================================
+   LISTS
+   =========================================== */
+
+.bullet-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+}
+.bullet-list li {
+  display: grid;
+  grid-template-columns: 1.2em 1fr;
+  /* gap: 0.5em; */
+  font-family: var(--font-sans);
+  /* font-weight: 300; */
+  /* line-height: 1.5; */
+}
+/* Ivory Ledger bullet: em dash in muted tan — never a heavy accent dot */
+.bullet-list li::before {
+  content: "—";
+  color: var(--c-fg-light-3);
+  font-family: var(--font-mono);
 }
 
 /* ===========================================
@@ -230,6 +255,19 @@ body {
   }
 }
 
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.hidden.is-visible {
+  visibility: visible;
+  animation-name: kFadeUp;
+  animation-duration: var(--dur-enter);
+  animation-timing-function: var(--ease-enter);
+  animation-fill-mode: forwards;
+}
+
 /* ===========================================
    TYPOGRAPHY
    =========================================== */
@@ -286,6 +324,16 @@ body {
   font-weight: 400;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+}
+.note {
+  position: fixed;
+  bottom: 20px;
+  left: 28px;
+  font-family: var(--font-sans);
+  font-size: var(--sz-caption);
+  color: var(--text);
+  z-index: 100;
+  user-select: none;
 }
 
 .top-right {
@@ -352,22 +400,61 @@ body {
   align-items: flex-end;
   margin-top: var(--gap-lg);
   padding-top: var(--gap-sm);
-  border-top: 1px solid var(--c-border-light);
+  /* border-top: 1px solid var(--text); */
 }
 
-/* ── DIAGRAM ────────────────────────────────────────────────────────── */
-.slide--diagram .slide-body {
+/* 2. Section title */
+/* Opening slide: light cream bg, bottom-anchored content, no chrome */
+.slide--section {
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: var(--gap-lg);
   min-height: 0;
+  /* height: 100vh; /* Ensures the slide fills the entire screen height */ */
 }
+.slide--section-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  gap: var(--gap-md);
+}
+/* Bottom meta bar: thin rule above, author left, version right */
+.cover-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: var(--gap-lg);
+  padding-top: var(--gap-sm);
+  /* border-top: 1px solid var(--text); */
+}
+
+/* ── DIAGRAM ────────────────────────────────────────────────────────── */
+.slide--diagram {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--gap-lg);
+  min-height: 0;
+  height: 100vh; /* Ensures the slide fills the entire screen height */
+}
+
+.slide--diagram-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--gap-lg);
+  min-height: 0;
+}
+
 .flow {
   display: flex;
   align-items: flex-start;
   gap: 0;
 }
+
 .flow-step {
   flex: 1;
   display: flex;
@@ -375,10 +462,11 @@ body {
   gap: var(--gap-sm);
   padding-right: calc(var(--pad-x) * 0.4);
   padding-top: var(--gap-md);
-  border-top: 1px solid var(--c-border-light);
+  border-top: 1px solid var(--text);
 }
+
 .flow-num {
-  font-family: var(--f-display);
+  font-family: var(--font-sans);
   font-size: 3.5vw;
   font-weight: 200;
   line-height: 1;
@@ -386,18 +474,89 @@ body {
   letter-spacing: -0.02em;
 }
 .flow-title {
-  font-family: var(--f-heading);
+  font-family: var(--font-serif);
   font-size: var(--sz-h3);
   font-weight: 400;
   line-height: 1.2;
   color: var(--c-fg-light);
 }
 .flow-desc {
-  font-family: var(--f-body);
+  font-family: var(--font-sans);
   font-size: var(--sz-body);
   font-weight: 300;
   color: var(--c-fg-light-2);
   line-height: 1.68;
+}
+
+/* Single-column slide */
+.slide--single {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--gap-lg);
+  min-height: 0;
+}
+
+.slide--single-body {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--gap-lg);
+  min-height: 0;
+}
+
+/* Two-column slide */
+.slide--split {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--gap-lg);
+  min-height: 0;
+}
+
+.slide--split-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  place-items: center;
+  gap: var(--gap-lg);
+  min-height: 0;
+}
+.split-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-md);
+}
+.split-image {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+}
+/* Always specify explicit height in vh — never auto or aspect-ratio */
+.split-image img,
+.img-placeholder {
+  width: 100%;
+  height: 55vh;
+}
+.split-image img {
+  object-fit: fit;
+  display: block;
+}
+.img-placeholder {
+  border: 1px solid var(--c-border-light);
+  background: var(--c-bg-light-alt);
+  color: var(--c-fg-light-2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--f-mono);
+  font-size: var(--sz-label);
+  font-weight: 400;
 }
 
 /* 9. END */

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Research Synthesis</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../navigation.js" defer></script>
+  </head>
+  <body>
+    <div>
+      <section
+        class="slide slide--split"
+        style="position: relative; height: 100vh"
+      >
+        <header class="slide-header">
+          <span class="label muted"
+            >Towards Massively Parallel Motion Planning with Inverse
+            Dynamics</span
+          >
+          <span class="label muted">01. Motivation</span>
+        </header>
+
+        <div class="slide--split-body">
+          <div class="split-image">
+            <img src="media/img/focchi_concept.svg" />
+            <p class="label">bi-level motion planner overview</p>
+          </div>
+          <div class="split-text">
+            <h3 class="h3" data-anim="fade-up" data-delay="2">
+              Bi-Level Optimization for Contact and Motion Planning in
+              Rope-Assisted Legged Robots <sup>*</sup>
+            </h3>
+            <p class="body" data-anim="fade-up" data-delay="3">
+              Ruben Malacarne, Ioannis Tsikelis, Enrico Mingo Hoffman and
+              Michele Focchi
+            </p>
+            <p class="lead" data-anim="fade-up" data-delay="3">
+              Similar idea, extended to a climbing legged robot.
+            </p>
+            <ul class="bullet-list" data-anim="fade-up" data-delay="4">
+              <li class="body hidden">determine landing patch sequence</li>
+              <li class="body hidden">
+                jointly plan landing location and robot trajectory
+              </li>
+              <li class="body hidden">
+                resulting trajectories can be tracked by an MPC (in simulation)
+              </li>
+            </ul>
+            <p class="note" data-anim="fade-up" data-delay="3">
+              <sup>*</sup>Submitted to IEEE IROS 2026, Pittsburgh, US
+            </p>
+          </div>
+        </div>
+
+        <footer class="slide-footer"></footer>
+
+        <div id="slide-counter">07</div>
+      </section>
+    </div>
+  </body>
+</html>
