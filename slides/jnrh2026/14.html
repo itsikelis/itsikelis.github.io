@@ -18,33 +18,34 @@
             >Towards Massively Parallel Motion Planning with Inverse
             Dynamics</span
           >
-          <span class="label muted">01. Motivation</span>
+          <span class="label muted">02. OCP Solver</span>
         </header>
-        <div class="slide--split-body">
-          <div class="split-image" data-anim="fade-up" data-delay="2">
-            <!-- <div class="img-placeholder">Image placeholder</div> -->
-            <img src="media/img/parallel_sim.jpg" />
-            <p class="label">image courtesy: isaacsim</p>
-          </div>
 
+        <div class="h3" data-anim="fade-up" data-delay="0">
+          Our Optimal Control Problem
+        </div>
+        <div class="slide--split-body">
+          <div class="split-image">
+            <!-- <div class="img-placeholder">Image placeholder</div> -->
+            <img class="hidden" src="media/eqs/our_ocp.svg" />
+          </div>
           <div class="split-text">
-            <h3 class="h3" data-anim="fade-up" data-delay="2">
-              Parallel Evaluation of Robotic Systems
-            </h3>
-            <p class="lead" data-anim="fade-up" data-delay="3">
-              Benefits for a number of applications:
-            </p>
-            <ul class="bullet-list" data-anim="fade-up" data-delay="4">
-              <li class="body hidden">Reinforcement and imitation learning</li>
-              <li class="body hidden">Sampling-based algorithms</li>
-              <li class="body hidden">Robust control</li>
-              <li class="body hidden">Contact sequence discovery</li>
+            <ul class="bullet-list" data-anim="fade-up" data-delay="0">
+              <li class="body hidden">Non-linear optimization problem</li>
+              <li class="body hidden">Inverse dynamics formulation</li>
+              <li class="body hidden">
+                Equality constraints for the underactuation
+              </li>
+              <li class="body hidden">
+                Solved through Sequential Quadratic Programming (SQP)
+              </li>
             </ul>
           </div>
         </div>
+
         <footer class="slide-footer"></footer>
 
-        <div id="slide-counter">04</div>
+        <div id="slide-counter">14</div>
       </section>
     </div>
   </body>

@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Research Synthesis</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../navigation.js" defer></script>
+  </head>
+  <body>
+    <div>
+      <section
+        class="slide slide--split"
+        style="position: relative; height: 100vh"
+      >
+        <header class="slide-header">
+          <span class="label muted"
+            >Towards Massively Parallel Motion Planning with Inverse
+            Dynamics</span
+          >
+          <span class="label muted">02. OCP Solver</span>
+        </header>
+
+        <div class="h3" data-anim="fade-up" data-delay="0">
+          Concerning Dynamics
+        </div>
+        <div class="rule" data-anim="fade-up" data-delay="0"></div>
+        <div class="slide--split-body">
+          <div class="split-text hidden">
+            <div class="lead" data-anim="fade-up" data-delay="0">
+              Forward Dynamics
+            </div>
+            <img class="hidden" width="50%" src="media/eqs/forward_dyn.svg" />
+            <ul class="bullet-list" data-anim="fade-up" data-delay="0">
+              <li class="body hidden">
+                Consider joint torques as control variables
+              </li>
+              <li class="body hidden">
+                Calculate joint accelerations from the equations of motion
+              </li>
+              <li class="body hidden">
+                Integrate to obtain joint velocities and positions
+              </li>
+              <li class="body hidden">Requires inversion of the mass matrix</li>
+            </ul>
+          </div>
+          <div class="split-text hidden">
+            <div class="lead" data-anim="fade-up" data-delay="2">
+              Inverse Dynamics
+            </div>
+            <img class="hidden" width="45%" src="media/eqs/inverse_dyn.svg" />
+            <ul class="bullet-list" data-anim="fade-up" data-delay="0">
+              <li class="body hidden">
+                Consider joint accelerations as control variables
+              </li>
+              <li class="body hidden">
+                Treat torque limits as additional constraints
+              </li>
+              <li class="body hidden">
+                Does not require inversion of the mass matrix
+              </li>
+              <li class="body hidden">
+                <span
+                  >Special case: <u><b>Underactuated Systems</b></u></span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <footer class="slide-footer"></footer>
+
+        <div id="slide-counter">13</div>
+      </section>
+    </div>
+  </body>
+</html>

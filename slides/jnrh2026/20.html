@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Research Synthesis</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../navigation.js" defer></script>
+  </head>
+  <body>
+    <div>
+      <section
+        class="slide slide--split"
+        style="position: relative; height: 100vh"
+      >
+        <header class="slide-header">
+          <span class="label muted"
+            >Towards Massively Parallel Motion Planning with Inverse
+            Dynamics</span
+          >
+          <span class="label muted">02. OCP Solver</span>
+        </header>
+
+        <div class="h3" data-anim="fade-up" data-delay="0">
+          Termination Check
+        </div>
+        <div class="slide--split-body" data-anim="fade-up" data-delay="1">
+          <div class="split-text">
+            <img width="50%" src="media/eqs/termination.svg" />
+          </div>
+          <div class="split-text">
+            <ul class="bullet-list" data-anim="fade-up" data-delay="4">
+              <li class="body hidden">
+                Inner QP corrections must be sufficiently small
+              </li>
+              <li class="body hidden">Constraints must be satisfied</li>
+            </ul>
+          </div>
+        </div>
+
+        <footer class="slide-footer"></footer>
+
+        <div id="slide-counter">19</div>
+      </section>
+    </div>
+  </body>
+</html>

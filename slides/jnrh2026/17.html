@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Research Synthesis</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../navigation.js" defer></script>
+  </head>
+  <body>
+    <div>
+      <section
+        class="slide slide--split"
+        style="position: relative; height: 100vh"
+      >
+        <header class="slide-header">
+          <span class="label muted"
+            >Towards Massively Parallel Motion Planning with Inverse
+            Dynamics</span
+          >
+          <span class="label muted">02. OCP Solver</span>
+        </header>
+
+        <div class="h3">Linearization</div>
+        <div class="slide--split-body">
+          <div class="split-text">
+            <div class="lead" data-anim="fade-up" data-delay="0">
+              Taking the first order Taylor expansion:
+            </div>
+            <img
+              width="100%"
+              data-anim="fade-up"
+              data-delay="0"
+              src="media/eqs/qp_lagr.svg"
+            />
+          </div>
+          <div class="split-text">
+            <ul class="bullet-list">
+              <li class="body hidden">
+                This describes a standard Quadratic Program with a specific
+                structure.
+              </li>
+              <li class="body hidden">
+                The variables of the QP can be applied as corrections to the
+                current solution guess.
+              </li>
+              <li class="body hidden">
+                We can use existing methods to solve it efficiently.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <footer class="slide-footer"></footer>
+
+        <div id="slide-counter">17</div>
+      </section>
+    </div>
+  </body>
+</html>

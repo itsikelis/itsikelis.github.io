@@ -1,10 +1,10 @@
 /* CSS Style sheet for slides. Heavily based on: https://github.com/zarazhangrui/frontend-slides */
 
-@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap");
 
 @font-face {
-  font-family: "SatoshiLight";
-  src: url("../fonts/satoshi_light.woff");
+  font-family: "SatoshiRegular";
+  src: url("../fonts/satoshi_regular.woff");
 }
 
 @font-face {
@@ -35,7 +35,7 @@
 
   /* Font Families */
   --font-serif: "TiemposRegular", Georgia, serif;
-  --font-sans: "SatoshiLight", system-ui, sans-serif;
+  --font-sans: "SatoshiRegular", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", monospace;
 
   /* ── Type Scale ───────────────────────────────────────────────────── */
@@ -313,7 +313,7 @@ body {
 }
 .caption {
   font-family: var(--font-sans);
-  font-size: var(--sz-caption);
+  font-size: var(--sz-label);
   font-weight: 300;
   line-height: 1.55;
 }
@@ -330,7 +330,7 @@ body {
   bottom: 20px;
   left: 28px;
   font-family: var(--font-sans);
-  font-size: var(--sz-caption);
+  font-size: var(--sz-counter);
   color: var(--text);
   z-index: 100;
   user-select: none;
@@ -516,14 +516,15 @@ body {
   min-height: 0;
 }
 
+.align-top {
+  align-items: start;
+}
+
 .slide--split-body {
   display: grid;
   grid-template-columns: 1fr 1fr;
   flex: 1;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  place-items: center;
   gap: var(--gap-lg);
   min-height: 0;
 }

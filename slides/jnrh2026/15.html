@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Research Synthesis</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../navigation.js" defer></script>
+  </head>
+  <body>
+    <div>
+      <section class="slide slide--diagram">
+        <header class="slide-header">
+          <span class="label muted"
+            >Towards Massively Parallel Motion Planning with Inverse
+            Dynamics</span
+          >
+          <span class="label muted">02. OCP Solver</span>
+        </header>
+
+        <div class="slide--diagram-body">
+          <div class="h3" data-anim="fade-up" data-delay="0">SQP Pipeline</div>
+          <div class="flow" data-anim="fade-up" data-delay="1">
+            <div class="flow-step hidden">
+              <div class="flow-num">01</div>
+              <div class="flow-title">Linearization</div>
+              <div class="flow-desc">
+                Linearize problem around current solution guess.
+              </div>
+            </div>
+            <div class="flow-step hidden">
+              <div class="flow-num">02</div>
+              <div class="flow-title">QP Resolution</div>
+              <div class="flow-desc">
+                Solve the resulting Quadratic Program to gain corrections to
+                initial variables.
+              </div>
+            </div>
+            <div class="flow-step hidden">
+              <div class="flow-num">03</div>
+              <div class="flow-title">Line Search</div>
+              <div class="flow-desc">
+                Scale the corrections before summing them back to the current
+                solution guess.
+              </div>
+            </div>
+            <div class="flow-step hidden">
+              <div class="flow-num">04</div>
+              <div class="flow-title">Termination</div>
+              <div class="flow-desc">
+                Check for termination or go back to step 1.
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <footer class="slide-footer"></footer>
+
+        <div id="slide-counter">15</div>
+      </section>
+    </div>
+  </body>
+</html>

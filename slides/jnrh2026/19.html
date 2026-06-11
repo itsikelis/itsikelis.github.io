@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Research Synthesis</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../navigation.js" defer></script>
+  </head>
+  <body>
+    <div>
+      <section
+        class="slide slide--split"
+        style="position: relative; height: 100vh"
+      >
+        <header class="slide-header">
+          <span class="label muted"
+            >Towards Massively Parallel Motion Planning with Inverse
+            Dynamics</span
+          >
+          <span class="label muted">02. OCP Solver</span>
+        </header>
+
+        <div class="h3" data-anim="fade-up" data-delay="0">Line Search</div>
+        <div class="slide--split-body" data-anim="fade-up" data-delay="1">
+          <div class="split-text">
+            <div class="lead">Purpose:</div>
+            <div class="body">
+              Scale the QP corrections before summing it back to the initial
+              guess.
+            </div>
+            <div class="lead">Strategy:</div>
+            <div class="body">
+              Evaluate decreasing scale sizes based on a custom metric.
+            </div>
+          </div>
+          <div class="split-text hidden">
+            <div class="lead">Filter Function:</div>
+            <img width="70%" src="media/eqs/filter.svg" />
+          </div>
+        </div>
+
+        <footer class="slide-footer"></footer>
+
+        <div id="slide-counter">19</div>
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Research Synthesis</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../navigation.js" defer></script>
+  </head>
+  <body>
+    <div>
+      <section
+        class="slide slide--split"
+        style="position: relative; height: 100vh"
+      >
+        <header class="slide-header">
+          <span class="label muted"
+            >Towards Massively Parallel Motion Planning with Inverse
+            Dynamics</span
+          >
+          <span class="label muted">02. OCP Solver</span>
+        </header>
+
+        <div class="h3" data-anim="fade-up" data-delay="0">QP Resolution</div>
+        <div class="slide--split-body">
+          <div class="split-text hidden">
+            <div class="lead">Grouping variables and matrices as follows:</div>
+            <img width="80%" src="media/eqs/lqr_vars.svg" />
+          </div>
+          <div class="split-text">
+            <ul class="bullet-list">
+              <li class="body hidden">
+                Leads to a tri-diagonal form of the Karush-Kuhn-Tucker matrix.
+              </li>
+              <li class="body hidden">
+                Can be solved using the typical Linear Quadratic Regulator
+                algorithm.
+              </li>
+              <li class="body hidden">
+                <span
+                  ><b>Result</b>: Inverse dynamics QP resolution that is time
+                  and space efficient.</span
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <footer class="slide-footer"></footer>
+
+        <div id="slide-counter">18</div>
+      </section>
+    </div>
+  </body>
+</html>

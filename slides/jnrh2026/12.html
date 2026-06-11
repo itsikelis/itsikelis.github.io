@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Research Synthesis</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../navigation.js" defer></script>
+  </head>
+  <body>
+    <div>
+      <section
+        class="slide slide--split"
+        style="position: relative; height: 100vh"
+      >
+        <header class="slide-header">
+          <span class="label muted"
+            >Towards Massively Parallel Motion Planning with Inverse
+            Dynamics</span
+          >
+          <span class="label muted">02. OCP Solver</span>
+        </header>
+
+        <div class="h3" data-anim="fade-up" data-delay="0">
+          The Optimal Control Problem
+        </div>
+        <div class="slide--split-body">
+          <div class="split-image">
+            <!-- <div class="img-placeholder">Image placeholder</div> -->
+            <img class="hidden" src="media/eqs/ocp.svg" />
+          </div>
+          <div class="split-text">
+            <ul class="bullet-list" data-anim="fade-up" data-delay="0">
+              <li class="body hidden">
+                System states and controls discretized along a time horizon and
+                become optimization variables in a (non-linear) optimization
+                problem.
+              </li>
+              <li class="body hidden">
+                Each state-action pair (stages) linked to the following one via
+                dynamics integration constraints.
+              </li>
+              <li class="body hidden">
+                Support for additional constraints such as joint and control
+                limits, contacts or environmental collisions.
+              </li>
+              <li class="body hidden">
+                Numerical methods can be employed to solve the resulting
+                problem.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <footer class="slide-footer"></footer>
+
+        <div id="slide-counter">12</div>
+      </section>
+    </div>
+  </body>
+</html>
