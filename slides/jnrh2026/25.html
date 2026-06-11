@@ -18,29 +18,36 @@
             >Towards Massively Parallel Motion Planning with Inverse
             Dynamics</span
           >
-          <span class="label muted">02. OCP Solver</span>
+          <span class="label muted">04. Experiments</span>
         </header>
 
         <div class="h3" data-anim="fade-up" data-delay="0">
-          Termination Check
+          Scaling Capabilities
         </div>
-        <div class="slide--split-body" data-anim="fade-up" data-delay="1">
-          <div class="split-text">
-            <img width="50%" src="media/eqs/termination.svg" />
+        <div class="slide--split-body">
+          <div class="split-text" data-anim="fade-up" data-delay="0">
+            <img width="90%" src="media/plots/scaling.svg" />
           </div>
           <div class="split-text">
-            <ul class="bullet-list" data-anim="fade-up" data-delay="4">
+            <ul class="bullet-list">
               <li class="body hidden">
-                Inner QP corrections sufficiently small
+                Stable GPU scaling as batch size (parallel environments)
+                increases.
               </li>
-              <li class="body hidden">Constraints satisfied</li>
+              <li class="body hidden">
+                Surprising CPU performance for up to thousands of parallel
+                environment.
+              </li>
+              <li class="body hidden">
+                Inverse dynamics formulation overall faster.
+              </li>
             </ul>
           </div>
         </div>
 
         <footer class="slide-footer"></footer>
 
-        <div id="slide-counter">20</div>
+        <div id="slide-counter">25</div>
       </section>
     </div>
   </body>

@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Research Synthesis</title>
+    <link rel="stylesheet" href="../style.css" />
+    <script src="../navigation.js" defer></script>
+  </head>
+  <body>
+    <div>
+      <section
+        class="slide slide--single"
+        style="position: relative; height: 100vh"
+      >
+        <header class="slide-header">
+          <span class="label muted"
+            >Towards Massively Parallel Motion Planning with Inverse
+            Dynamics</span
+          >
+          <span class="label muted">05. Conclusions</span>
+        </header>
+
+        <div class="slide--single-body">
+          <div class="h3" data-anim="fade-up" data-delay="0">
+            Future Directions
+          </div>
+          <ul class="bullet-list" data-anim="fade-up" data-delay="0">
+            <li class="body hidden">
+              Include generic constraint handling (via ADMM or IP)
+            </li>
+            <li class="body hidden">
+              Support SE(3) manifold variables for floating base systems
+            </li>
+            <li class="body hidden">
+              Make solver differentiable to use as a neural network layer
+            </li>
+            <li class="body hidden">
+              Improve real-time performance through C++/CUDA kernels
+            </li>
+          </ul>
+        </div>
+
+        <footer class="slide-footer"></footer>
+
+        <div id="slide-counter">36</div>
+      </section>
+    </div>
+  </body>
+</html>
